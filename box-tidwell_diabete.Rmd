@@ -1,0 +1,82 @@
+---
+title: "regression logistique diabète détection"
+output: html_document
+date: "2025-06-18"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# 0) Installation et chargement
+# Fixer un miroir CRAN sans interaction
+options(repos = c(CRAN = "https://cran.univ-paris1.fr"))
+install.packages(c("mlbench","car"))  # si nécessaire
+library(mlbench); library(car)
+
+# 1) Jeu de données
+data(PimaIndiansDiabetes2)
+df <- na.omit(PimaIndiansDiabetes2)
+head(df)
+```
+
+## Exemple R : régression logistique et test de Box–Tidwell sur PimaIndiansDiabetes2
+
+### Contexte  
+– Jeu de données : **PimaIndiansDiabetes2** (package `mlbench`).  
+– Objectif : prédire la survenue du diabète (`diabetes`, binaire « pos »/« neg »)  
+à partir de mesures physiologiques chez des femmes Pima[^2^].  
+– Variable à expliquer (Y) : `diabetes`  
+– Variables explicatives (X) :  
+  - `glucose` : concentration de glucose plasmatique  
+- `pressure` : pression diastolique  
+- `triceps` : épaisseur du pli cutané tricipital  
+- `insulin` : insulinemie sérique  
+- `mass` : indice de masse corporelle  
+- `pedigree` : fonction de transmission du diabète  
+- `age` : âge en années  
+
+Pour vérifier la linéarité du logit en glucose, on construit :
+## exemple pour tester une variable explicative
+exemple avec la variable age:
+```{r PimaIndiansDiabetes2}
+# 1) Création des variables explicative adapté au model Box–Tidwell
+df$age_bt <- df$age * log(df$age)
+
+# 2) Ajout du terme Box–Tidwell au modèle
+mod0 <- glm(diabetes ~ age,      data=df, family=binomial) #modèle de regression basique
+mod_bt <- glm(diabetes ~ age + age_bt,
+              data = df, family = binomial) #moddèle pour vérifier la linéarité de age
+
+# 3) vérification du modèle créer
+summary(mod_bt)
+
+# 4) visualisation directe de la p value:
+p_bt <- summary(mod_bt)$coefficients["age_bt", "Pr(>|z|)"]
+print(paste("p-value (age_bt) =", round(p_bt, 4)))
+
+```
+
+Ici la p-value de l'age est inferieur a 0.05 on rejette l'hypothèse h0 de linéarité du logit, il faut adapté la variable age dans ce cas, si on veux l'ajouter au modèle
+
+## exemple pour avec plusieurs variables explicatives
+```{r PimaIndiansDiabetes2 plusieur variables}
+# 1) Création des termes BT pour plusieurs variables
+vars <- c("glucose","pressure","triceps","insulin","mass","pedigree","age")
+for (v in vars) {
+  df[[paste0(v,"_bt")]] <- df[[v]] * log(df[[v]])
+}
+
+
+#Ajout du terme Box–Tidwell au modèle
+mod_bt <- glm(diabetes ~ glucose + glucose_bt,
+              data = df, family = binomial)
+
+# 2) Ajustement du modèle logistique avec tous les termes BT
+formule <- paste0("diabetes ~ ",
+                  paste(vars, collapse=" + "), " + ",
+                  paste(paste0(vars,"_bt"), collapse=" + "))
+mod_bt_multi <- glm(as.formula(formule),
+                    data = df, family = binomial)
+
+summary(mod_bt_multi)
+```
+Ici la p-value de l'age est inferieur a 0.05 on rejette l'hypothèse h0 de linéarité du logit, il faut adapté la variable age dans ce cas, si on veux l'ajouter au modèle
