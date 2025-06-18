@@ -10,7 +10,7 @@
 2. La linéarité entre les variables explicatives et la fonction logit de la variable à expliquer :    
 - La régression logistique suppose qu’il existe une relation linéaire entre chaque variable explicative et le logit de la variable de réponse.    
 **Comment vérifier cette hypothèse :**    
-Le moyen le plus simple de voir si cette hypothèse est vérifiée est d’utiliser un test de Box-Tidwell.
+Le moyen le plus simple de voir si cette hypothèse est vérifiée est d’utiliser un test de [Box-Tidwell](méthode_box-tidwell_diabete.Rmd).
     
 3. Absence de multicolinéarité:     
 - La régression logistique suppose qu’il n’y a pas de multicolinéarité grave entre les variables explicatives:
