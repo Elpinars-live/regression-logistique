@@ -14,8 +14,8 @@ Le moyen le plus simple de voir si cette hypothèse est vérifiée est d’utili
     
 3. Absence de multicolinéarité:     
 - La régression logistique suppose qu’il n’y a pas de multicolinéarité grave entre les variables explicatives:
-- quand deux variables explicatives sont fortement corrélées les unes aux autres, elles ne fournissent pas d’informations uniques ou indépendantes dans le modèle de régression.
-*exemple :* on veux prédire la détente verticale d'un joueur de basket on va regarder des variables explicatives comme la taille du jouer et la pointure, des variables souvent corrélées    
+- quand deux variables explicatives sont fortement corrélées les unes aux autres, elles ne fournissent pas d’informations uniques ou indépendantes dans le modèle de régression.      
+*exemple : on veux prédire la détente verticale d'un joueur de basket on va regarder des variables explicatives comme la taille du jouer et la pointure, des variables souvent corrélées*    
 **Comment vérifier cette hypothèse :** le moyen le plus courant de détecter la multicolinéarité consiste à utiliser le facteur d’inflation de la variance (VIF), sur R utiliser la fonction VIF(modèle) avec un modèle glm():
     - VIF = 1 Il n'y a aucune corrélation entre les variables explicatives
     - VIF = 1 à 5 on détecte la présence de faible/moyenne corélation, mais cela reste acceptable
