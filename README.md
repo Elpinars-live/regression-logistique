@@ -1,6 +1,7 @@
 # mise en place d'une régression logistique
-> **Intro:** La régression logistique est une méthode de classification supervisée utilisée pour prédire la probabilité qu’un événement binaire se produise.    
->
+ **Intro:** La régression logistique est une méthode de classification supervisée utilisée pour prédire la probabilité qu’un événement binaire se produise.    
+> **prérequis:** il faut au préalabel avoir installer R
+> 
 **l’objectif:** d’une régression logistique est de modéliser la probabilité d’occurrence d’un événement binaire (par exemple : succès/échec, présence maladie/pas malade) en fonction d’un ensemble de variables explicatives. Elle permet ainsi de prédire la classe la plus probable pour une observation, tout en estimant l’influence de chaque variable.
 ## 6 hypothèses à vérifié avant de procéder :
 
@@ -19,8 +20,8 @@ Le moyen le plus simple de voir si cette hypothèse est vérifiée est d’utili
 **Comment vérifier cette hypothèse :** le moyen le plus courant de détecter la multicolinéarité consiste à utiliser le facteur d’inflation de la variance (VIF), sur R utiliser la fonction VIF(modèle) avec un modèle glm():
     - VIF = 1 Il n'y a aucune corrélation entre les variables explicatives
     - VIF = 1 à 5 on détecte la présence de faible/moyenne corélation, mais cela reste acceptable
-    - VIF > 5 indique la présence de corrélation potentiellement trop forte et peux fausser la regression
-   
+    - VIF > 5 indique la présence de corrélation potentiellement trop forte et peux fausser la regression      
+[exemple avec de modèle sur R avec PimaIndiansDiabetes2](VIF_diabete.R).
 5. Les observations sont indépendantes:    
 
 6. Pas de valeur aberrante    
