@@ -7,7 +7,7 @@ et [R tools](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html)
 ## 6 hypothèses à vérifié avant de procéder :
 
 1. La variable à expliqué est une variable binaire à deux modalités (ou plus dans certains cas complexe):    
-- simple exemple de variable binaire à expliquer : la présence d'une maladie 0/1, succès/échec (examen, concours, compétition...)
+- simple exemple de variable binaire à expliquer : la présence d'une maladie 0/1, succès/échec (examen, concours, compétition,jeux,...)
       
 2. La linéarité entre les variables explicatives et la fonction logit de la variable à expliquer :    
 - La régression logistique suppose qu’il existe une relation linéaire entre chaque variable explicative et le logit de la variable de réponse.
@@ -24,13 +24,17 @@ Le moyen le plus simple de voir si cette hypothèse est vérifiée est d’utili
     - VIF = 1 à 5 on détecte la présence de faible/moyenne corélation, mais cela reste acceptable
     - VIF > 5 indique la présence de corrélation potentiellement trop forte et peux fausser la regression      
 [exemple de VIF sur R avec PimaIndiansDiabetes2](VIF_diabete.R).
-5. Les observations sont indépendantes:
+4. Les observations sont indépendantes:
 
 
-6. Pas de valeur aberrante:
+5. Pas de valeur aberrante:
 La régression logistique suppose que les données ne contiennent pas de valeurs très anormales ou d’observations qui influencent fortement le modèle, on nomme ses observations les valeurs "aberrantes", des valeurs trop extrème qui on plus de chance d'être du à des erreurs (de saisie ou autre) et qui influencerais trop la moyenne et les modèles de regression.
 
 **Comment vérifier cette hypothèse :**      
-le moyen le plus courant de tester les valeurs aberrantes extrêmes et les observations influentes dans un ensemble de données consiste à calculer [la distance de Cook](distance_de_cook.R) ([pour en savoir plus sur la distance de Cook](https://statorials.org/comment-identifier-les-points-de-donnees-influents-en-utilisant-la-distance-des-cuisiniers/)
+le moyen le plus courant de tester les valeurs aberrantes extrêmes et les observations influentes dans un ensemble de données consiste à calculer [la distance de Cook](distance_de_cook.R)       
+([pour en savoir plus sur la distance de Cook](https://statorials.org/comment-identifier-les-points-de-donnees-influents-en-utilisant-la-distance-des-cuisiniers/))
 
-8. La taille de l’échantillon est suffisamment grande:    
+6. La taille de l’échantillon est suffisamment grande:
+La fiabilité d’une régression logistique dépend du nombre d’observations disponibles.
+
+Comment vérifier ? • Pour chaque variable explicative, on recommande au minimum 10 événements du résultat le moins fréquent (en gros 10 fois au moins la modalité la plus rare par variable). • Exemple : 3 variables + un résultat rare à 20 % ⇒ (10 × 3) / 0,20 = 150 observations minimales (150 ligne minimum dans le jeu de données).
