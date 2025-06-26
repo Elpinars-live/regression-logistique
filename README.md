@@ -23,7 +23,7 @@ Le moyen le plus simple de voir si cette hypothèse est vérifiée est d’utili
     - VIF = 1 Il n'y a aucune corrélation entre les variables explicatives
     - VIF = 1 à 5 on détecte la présence de faible/moyenne corélation, mais cela reste acceptable
     - VIF > 5 indique la présence de corrélation potentiellement trop forte et peux fausser la regression      
-[exemple avec de modèle sur R avec PimaIndiansDiabetes2](VIF_diabete.R).
+[exemple de VIF sur R avec PimaIndiansDiabetes2](VIF_diabete.R).
 5. Les observations sont indépendantes:
 
 
@@ -31,6 +31,6 @@ Le moyen le plus simple de voir si cette hypothèse est vérifiée est d’utili
 La régression logistique suppose que les données ne contiennent pas de valeurs très anormales ou d’observations qui influencent fortement le modèle, on nomme ses observations les valeurs "aberrantes", des valeurs trop extrème qui on plus de chance d'être du à des erreurs (de saisie ou autre) et qui influencerais trop la moyenne et les modèles de regression.
 
 **Comment vérifier cette hypothèse :**      
-le moyen le plus courant de tester les valeurs aberrantes extrêmes et les observations influentes dans un ensemble de données consiste à calculer la distance de Cook pour
+le moyen le plus courant de tester les valeurs aberrantes extrêmes et les observations influentes dans un ensemble de données consiste à calculer [la distance de Cook](distance_de_cook.R) ([pour en savoir plus sur la distance de Cook](https://statorials.org/comment-identifier-les-points-de-donnees-influents-en-utilisant-la-distance-des-cuisiniers/)
 
 8. La taille de l’échantillon est suffisamment grande:    
