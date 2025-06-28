@@ -1,6 +1,6 @@
-# mise en place d'une régression logistique
+# Mise en place d'une régression logistique
  **Intro:** La régression logistique est une méthode de classification supervisée utilisée pour prédire la probabilité qu’un événement binaire se produise.    
-> **prérequis:** il faut au préalabel avoir installer R. [installer rms sur R studio 4.2](install_rms.R)
+> **prérequis:** il faut au préalabel avoir R
 et [R tools](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html)
 > 
 **l’objectif:** d’une régression logistique est de modéliser la probabilité d’occurrence d’un événement binaire (par exemple : succès/échec, présence maladie/pas malade) en fonction d’un ensemble de variables explicatives. Elle permet ainsi de prédire la classe la plus probable pour une observation, tout en estimant l’influence de chaque variable.
@@ -14,7 +14,11 @@ et [R tools](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html)
 
 **Comment vérifier cette hypothèse :**    
 Le moyen le plus simple de voir si cette hypothèse est vérifiée est d’utiliser un test de [Box-Tidwell](méthode_box-tidwell_diabete.Rmd).
-    
+
+**comment adapter ses variables explicatives** (si elles sont significatives au test de box_tidwell):      
+le plus simple est de convertir la variable avec un log, sur R df$variable_adapter <- log(df$variable)      
+Mais dans certains cas même avec un log la variable reste inadaptée. Il faut alors utiliser [le package "mfp"](adapt-variable.R) qui va automatiquement chercher quels est la meilleur adaptation de la variable
+
 3. Absence de multicolinéarité:     
 - La régression logistique suppose qu’il n’y a pas de multicolinéarité grave entre les variables explicatives:
 - quand deux variables explicatives sont fortement corrélées les unes aux autres, elles ne fournissent pas d’informations uniques ou indépendantes dans le modèle de régression.      
@@ -34,7 +38,13 @@ La régression logistique suppose que les données ne contiennent pas de valeurs
 le moyen le plus courant de tester les valeurs aberrantes extrêmes et les observations influentes dans un ensemble de données consiste à calculer [la distance de Cook](distance_de_cook.R)       
 ([pour en savoir plus sur la distance de Cook](https://statorials.org/comment-identifier-les-points-de-donnees-influents-en-utilisant-la-distance-des-cuisiniers/))
 
+
 6. La taille de l’échantillon est suffisamment grande:
 La fiabilité d’une régression logistique dépend du nombre d’observations disponibles.
 
-Comment vérifier ? • Pour chaque variable explicative, on recommande au minimum 10 événements du résultat le moins fréquent (en gros 10 fois au moins la modalité la plus rare par variable). • Exemple : 3 variables + un résultat rare à 20 % ⇒ (10 × 3) / 0,20 = 150 observations minimales (150 ligne minimum dans le jeu de données).
+**Comment vérifier ?** • Pour chaque variable explicative, on recommande au minimum 10 événements du résultat le moins fréquent (en gros 10 fois au moins la modalité la plus rare par variable). • Exemple : 3 variables + un résultat rare à 20 % ⇒ (10 × 3) / 0,20 = 150 observations minimales (150 ligne minimum dans le jeu de données).
+
+ **sur R:**
+ > pour vérifier le nombre de ligne/observation dans un dataframe : nrow(df)      
+ > puis effectuer le calcul: (10 * nombre_de_variable_explicatif) / 0.20      
+ > comparer les deux résultats
