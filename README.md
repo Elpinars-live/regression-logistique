@@ -28,8 +28,19 @@ Mais dans certains cas même avec un log la variable reste inadaptée. Il faut a
     - VIF = 1 à 5 on détecte la présence de faible/moyenne corélation, mais cela reste acceptable
     - VIF > 5 indique la présence de corrélation potentiellement trop forte et peux fausser la regression      
 [exemple de VIF sur R avec PimaIndiansDiabetes2](VIF_diabete.R).
-4. Les observations sont indépendantes:
 
+4. Les observations sont indépendantes:
+Dans une régression logistique, chaque ligne de ton tableau doit représenter une “observation” totalement indépendante des autres.
+
+Autrement dit :
+- Tu ne dois pas avoir plusieurs lignes qui parlent du même individu (ex : les résultats de plusieurs jours d’une même personne).
+
+- Et il ne doit pas y avoir de lien logique ou chronologique entre les lignes (comme si une observation dépendait de la précédente).
+
+le modèle suppose que chaque observation est une “nouvelle info” venue de quelqu’un ou quelque chose de totalement distinct. Si certaines lignes se "répondent" entre elles, ça peut fausser les résultats et rendre les tests statistiques non valides.
+
+**Comment vérifier cette hypothèse :**      
+La manière la plus simple de vérifier cette hypothèse est de créer [un graphique des résidus](independance.R) en fonction du temps (c’est-à-dire l’ordre des observations) et d’observer s’il existe ou non une tendance aléatoire. S’il n’y a pas de modèle aléatoire, cette hypothèse peut être violée.
 
 5. Pas de valeur aberrante:
 La régression logistique suppose que les données ne contiennent pas de valeurs très anormales ou d’observations qui influencent fortement le modèle, on nomme ses observations les valeurs "aberrantes", des valeurs trop extrème qui on plus de chance d'être du à des erreurs (de saisie ou autre) et qui influencerais trop la moyenne et les modèles de regression.
