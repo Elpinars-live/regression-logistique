@@ -60,9 +60,8 @@ La fiabilité d’une régression logistique dépend du nombre d’observations 
  > puis effectuer le calcul: (10 * nombre_de_variable_explicatif) / 0.20      
  > comparer les deux résultats
 
-## Le modèle finale glm()
-vous pouvez maintenant profiter de votre regression logistique vous venez de créer un modèle de prédiction (plus ou efficace)      
-**maintenant que faire?**
-      - Repérer les variables significativement associé à la variable cible avec des **P-values** inferieur a 0.05 (par défaut on préfère une p-value inferieur a 0.05 mais ce paramètre dépend des études)
-      - caluler **les odds-ratios et intervalles de confiance** pour mesurer l'intensité des associations
-      - tester le modèle de **"prédiction"** que vous venez de créer en faisant un predict()
+## Le modèle finale glm()      
+vous pouvez maintenant profiter de votre regression logistique vous venez de créer un modèle de prédiction (plus ou efficace). **Maintenant que faire?**     
+      - Repérer les variables significativement associé à la variable cible avec des **P-values** inferieur a 0.05 (par défaut on préfère une p-value inferieur a 0.05 mais ce paramètre dépend des études)      
+      - caluler **les odds-ratios et intervalles de confiance** pour mesurer l'intensité des associations      
+      - tester le modèle de **"prédiction"** que vous venez de créer en faisant un predict()      
