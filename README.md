@@ -1,6 +1,6 @@
 # Mise en place d'une régression logistique
 
-**Intro :** La régression logistique est une méthode de classification supervisée utilisée pour prédire la probabilité qu’un événement binaire se produise. c'est une technique de machine learning 
+**Intro :** La régression logistique est une méthode de classification supervisée utilisée pour prédire la probabilité qu’un événement binaire se produise. (c'est une technique de machine learning)
 > **Prérequis :** il faut au préalable avoir R  
 > et [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html)
 
