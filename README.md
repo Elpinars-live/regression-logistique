@@ -1,4 +1,4 @@
-<img width="783" height="94" alt="image" src="https://github.com/user-attachments/assets/8970e1f7-e617-44d3-850a-44d6d3a4bc12" /># Mise en place d'une régression logistique
+# Mise en place d'une régression logistique
 
 **Intro :** La régression logistique est une méthode de classification supervisée utilisée pour prédire la probabilité qu’un événement binaire se produise. (c'est une technique de machine learning)
 > **Prérequis :** il faut au préalable avoir R  
