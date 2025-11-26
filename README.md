@@ -70,7 +70,7 @@ Sur R :
 >  on peut aussi vérifier manuelement le nombre d'observation par modalité avec table(df$variable)
 
 ## Le modèle final glm()  
-Vous pouvez maintenant profiter de votre régression logistique : vous venez de créer un modèle de prédiction (plus ou moins performant). Que faire ensuite ?  
+Vous pouvez maintenant profiter de votre [régression logistique](https://github.com/Elpinars-live/regression-logistique/blob/main/regression_logistique_complet.pdf) : vous venez de créer un modèle de prédiction (plus ou moins performant). Que faire ensuite ?  
 - Repérer les variables significativement associées à la variable cible avec des p‑values inférieures à 0.05 (par défaut on préfère une p‑value < 0.05, mais ce seuil dépend du contexte).  
 - Calculer les odds‑ratios et leurs intervalles de confiance pour mesurer l'intensité des associations.  
 - Tester le modèle de prédiction que vous venez de créer en utilisant predict().
