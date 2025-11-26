@@ -72,8 +72,8 @@ Vous pouvez maintenant profiter de votre régression logistique : vous venez de 
 on pourrait allier cela à un cross-validation. pour visualiser la précision du modèle sous différent angle
 ### Pourquoi faire cela ?
 La régression logistique peut donner des résultats différents selon la manière dont on découpe les données entre données d'entrainement et données de test. La cross-validation permet d’obtenir une estimation plus robuste et plus stable de la performance du modèle, en réduisant l’effet du hasard lié à un seul découpage.
-la méthode la plus populaire est
-> **le k-fold cross-validation**, le principe est de:
+la méthode la plus populaire est  
+***le k-fold cross-validation***, le principe est de:
 - Diviser le jeu de données en k sous-échantillons (folds) (plus courament découper en deux).
 - Entraîner le modèle sur k-1 folds et tester sur le fold restant (la moitié en données entrainement l'autre en données test).
 - Répéter l’opération k fois et calculer la moyenne des scores.
