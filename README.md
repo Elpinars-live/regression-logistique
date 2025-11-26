@@ -1,4 +1,4 @@
-# Mise en place d'une régression logistique
+<img width="783" height="94" alt="image" src="https://github.com/user-attachments/assets/8970e1f7-e617-44d3-850a-44d6d3a4bc12" /># Mise en place d'une régression logistique
 
 **Intro :** La régression logistique est une méthode de classification supervisée utilisée pour prédire la probabilité qu’un événement binaire se produise. (c'est une technique de machine learning)
 > **Prérequis :** il faut au préalable avoir R  
@@ -44,6 +44,12 @@ Le modèle suppose que chaque observation est une “nouvelle information” ven
 Comment vérifier cette hypothèse :  
 La manière la plus simple est de créer [un graphique des résidus](independance.R) en fonction du temps (c’est‑à‑dire de l’ordre des observations) et d’observer s'il existe une tendance ou une autocorrélation.
 
+en pratique on peux directement admettre l'indépendance des variables:
+- Les tests ne révèlent pas de dépendance significative (p‑value > seuil sur des test comme la corrélations).
+- Les variables sont construites de façon conceptuelle pour être indépendantes (ex. : sexe et numéro de dossier).
+- les données ne contredisent pas l'hypothèse d'independance.
+comme on ne peux pas admettre l'indépendance absolue en ce base d'habitude sur une hypothèse de 
+
 5. Pas (ou peu) de valeurs aberrantes :  
 La régression logistique suppose que les données ne contiennent pas de valeurs très atypiques ou d’observations qui influencent fortement le modèle ; on nomme ces observations des valeurs "aberrantes".
 
@@ -55,12 +61,13 @@ Le moyen le plus courant pour détecter les valeurs aberrantes extrêmes et les 
 La fiabilité d’une régression logistique dépend du nombre d’observations disponibles.
 
 Comment vérifier ?  
-Pour chaque variable explicative, on recommande au minimum 10 événements de la modalité la moins fréquente (en gros, au moins 10 occurrences de la modalité la plus rare par variable).
+Pour chaque variable explicative, on recommande au minimum 10 événements de la modalité la moins fréquente (en gros, au moins 10 occurrences de la modalité la plus rare par variable qualitatives).
 
 Sur R :  
 > pour vérifier le nombre de lignes/observations dans un dataframe : nrow(df)  
 > puis effectuer le calcul : (10 * nombre_de_variables_explicatives) / 0.20  
 > comparer les deux résultats
+>  on peut aussi vérifier manuelement le nombre d'observation par modalité avec table(df$variable)
 
 ## Le modèle final glm()  
 Vous pouvez maintenant profiter de votre régression logistique : vous venez de créer un modèle de prédiction (plus ou moins performant). Que faire ensuite ?  
