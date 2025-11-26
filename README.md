@@ -1,6 +1,6 @@
 # Mise en place d'une régression logistique
 
-**Intro :** La régression logistique est une méthode de classification supervisée utilisée pour prédire la probabilité qu’un événement binaire se produise.  
+**Intro :** La régression logistique est une méthode de classification supervisée utilisée pour prédire la probabilité qu’un événement binaire se produise. c'est une technique de machine learning 
 > **Prérequis :** il faut au préalable avoir R  
 > et [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html)
 
@@ -67,3 +67,15 @@ Vous pouvez maintenant profiter de votre régression logistique : vous venez de 
 - Repérer les variables significativement associées à la variable cible avec des p‑values inférieures à 0.05 (par défaut on préfère une p‑value < 0.05, mais ce seuil dépend du contexte).  
 - Calculer les odds‑ratios et leurs intervalles de confiance pour mesurer l'intensité des associations.  
 - Tester le modèle de prédiction que vous venez de créer en utilisant predict().
+
+## aller plus loin
+on pourrait allier cela à un cross-validation. pour visualiser la précision du modèle sous différent angle
+### Pourquoi faire cela ?
+La régression logistique peut donner des résultats différents selon la manière dont on découpe les données entre données d'entrainement et données de test. La cross-validation permet d’obtenir une estimation plus robuste et plus stable de la performance du modèle, en réduisant l’effet du hasard lié à un seul découpage.
+la méthode la plus populaire est
+> **le k-fold cross-validation**, le principe est de:
+- Diviser le jeu de données en k sous-échantillons (folds) (plus courament découper en deux).
+- Entraîner le modèle sur k-1 folds et tester sur le fold restant (la moitié en données entrainement l'autre en données test).
+- Répéter l’opération k fois et calculer la moyenne des scores.
+
+cela permet donc de visualiser le modèle sous différent angle avec le même jeu de données et estimer une précision moyenne de ce modèle sur plusieurs test.
