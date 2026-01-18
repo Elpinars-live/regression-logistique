@@ -44,11 +44,9 @@ Le modèle suppose que chaque observation est une “nouvelle information” ven
 Comment vérifier cette hypothèse :  
 La manière la plus simple est de créer [un graphique des résidus](independance.R) en fonction du temps (c’est‑à‑dire de l’ordre des observations) et d’observer s'il existe une tendance ou une autocorrélation.
 
-en pratique on peux directement admettre l'indépendance des variables:
+en pratique on peux directement admettre l'indépendance des variables si:
 - Les tests ne révèlent pas de dépendance significative (p‑value > seuil sur des test comme la corrélations).
 - Les variables sont construites de façon conceptuelle pour être indépendantes (ex. : sexe et numéro de dossier).
-- les données ne contredisent pas l'hypothèse d'independance.
-comme on ne peux pas admettre l'indépendance absolue en ce base d'habitude sur une hypothèse de 
 
 5. Pas (ou peu) de valeurs aberrantes :  
 La régression logistique suppose que les données ne contiennent pas de valeurs très atypiques ou d’observations qui influencent fortement le modèle ; on nomme ces observations des valeurs "aberrantes".
