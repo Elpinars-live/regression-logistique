@@ -73,14 +73,33 @@ Vous pouvez maintenant profiter de votre [régression logistique](https://github
 - Calculer les odds‑ratios et leurs intervalles de confiance pour mesurer l'intensité des associations.  
 - Tester le modèle de prédiction que vous venez de créer en utilisant predict().
 
-## aller plus loin
-on pourrait allier cela à un cross-validation. pour visualiser la précision du modèle sous différent angle
-### Pourquoi faire cela ?
-La régression logistique peut donner des résultats différents selon la manière dont on découpe les données entre données d'entrainement et données de test. La cross-validation permet d’obtenir une estimation plus robuste et plus stable de la performance du modèle, en réduisant l’effet du hasard lié à un seul découpage.
-la méthode la plus populaire est  
-***le k-fold cross-validation***, le principe est de:
-- Diviser le jeu de données en k sous-échantillons (folds) (plus courament découper en deux).
-- Entraîner le modèle sur k-1 folds et tester sur le fold restant (la moitié en données entrainement l'autre en données test).
-- Répéter l’opération k fois et calculer la moyenne des scores.
+## Aller plus loin
 
-cela permet donc de visualiser le modèle sous différent angle avec le même jeu de données et estimer une précision moyenne de ce modèle sur plusieurs test.
+On pourrait allier cela à une **cross-validation**, pour visualiser la précision du modèle sous différents angles.
+
+### Pourquoi faire cela ?
+
+La régression logistique peut donner des résultats différents selon la manière dont on découpe les données entre données d'entraînement et données de test.  
+La cross-validation permet d’obtenir une estimation plus robuste et plus stable de la performance du modèle, en réduisant l’effet du hasard lié à un seul découpage.
+
+La méthode la plus populaire est  
+***le k-fold cross-validation***. Le principe est de :
+
+- Diviser le jeu de données en *k* sous-échantillons (folds).
+- Entraîner le modèle sur *k-1* folds et tester sur le fold restant.
+- Répéter l’opération *k* fois et calculer la moyenne des scores.
+
+Cela permet donc de visualiser le modèle sous différents angles avec le même jeu de données et d’estimer une précision moyenne plus fiable sur plusieurs tests.
+
+---
+
+### Sélection de variables : méthode *stepwise*
+
+Une méthode aleternative de sélection de variable automatique existe, utilisant une **sélection de variables stepwise** (forward, backward ou les deux).  
+Cette approche consiste à ajouter ou retirer progressivement des variables explicatives selon un critère statistique (AIC, BIC, p‑value, etc.). L’objectif est d’obtenir un modèle :
+
+- **Parcimonieux** : éviter d’inclure des variables inutiles qui augmentent le bruit.
+- **Interprétable** : garder un ensemble de variables cohérent et lisible.
+- **Performant** : conserver uniquement les variables qui améliorent réellement la prédiction.
+
+La méthode stepwise permet de garder une stabilité avec les variables sélectionnées automatiquement et d’obtenir un modèle à la fois robuste, simple et performant.
